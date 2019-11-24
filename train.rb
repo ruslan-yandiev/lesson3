@@ -15,7 +15,7 @@ class Train
     @sum = 0
   end
 
-  def type_troin
+  def type_train
     @type.each { |x| puts x}
   end
 
@@ -100,7 +100,7 @@ train1.show_speed
 train1.stop
 train1.show_speed
 train1.change_carriages(-1)
-train1.type_troin
+train1.type_train
 puts
 train1.add_route(route1)
 station1.show_trains_info
