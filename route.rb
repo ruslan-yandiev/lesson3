@@ -13,7 +13,12 @@ class Route
     @route.delete(way)
   end
 
-  def show_way
-    @route.each {|x| puts x.name}
+  def show_way(name_station = nil)
+    if name_station
+      num = @route.index(name_station)
+      puts "Вы покинули станцию #{@route[num -1].name},\nСейчас находитесь на станции #{@route[num].name}\nСледующая остановка #{@route[num + 1].name}"
+    else
+      @route.each {|x| puts x.name}
+    end
   end
 end

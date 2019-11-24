@@ -35,6 +35,14 @@ class Train
     puts @type[1]
   end
 
+  def show_route(arg = nil)
+    if arg
+      @route.show_way(@train_now)
+     else
+      @route.show_way
+    end
+  end
+
   def change_carriages(arg)
     if @speed == 0 && arg == 1 || @speed == 0 && arg == -1
       if arg == 1
@@ -91,7 +99,7 @@ station4 = Station.new('Краснодар')
 route1 = Route.new(station1, station2)
 route1.add_route(station3, station4)
 
-route1.show_way
+# route1.show_way
 
 train1 = Train.new('Поезд №1', 'Пасажирский', 10)
 
@@ -103,14 +111,20 @@ train1.change_carriages(-1)
 train1.type_train
 puts
 train1.add_route(route1)
+
 station1.show_trains_info
 station1.show_trains_info(1)
+
 
 train1.show_where
 train1.go(1)
 train1.show_where
 train1.go(1)
 train1.show_where
+
+train1.show_route
+train1.show_route(1)
+
 train1.go(1)
 train1.show_where
 train1.go(1)
@@ -120,6 +134,10 @@ train1.go(-1)
 train1.show_where
 train1.go(-1)
 train1.show_where
+
+train1.show_route
+train1.show_route(1)
+
 train1.go(-1)
 train1.show_where
 train1.go(-1)
