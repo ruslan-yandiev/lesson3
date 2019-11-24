@@ -6,9 +6,7 @@ class Route
   end
 
   def add_route(*new_route)
-    new_route.each do |r|
-      @route.insert(@route.size - 1, r)
-    end
+    new_route.each { |r| @route.insert(@route.size - 1, r) }
   end
 
   def delete_way(way)
