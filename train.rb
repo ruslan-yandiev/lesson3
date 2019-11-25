@@ -32,9 +32,9 @@ class Train
   end
 
   def show_route(arg = nil)
-    if arg
+    if arg && @route
       @route.show_way(@train_now)
-     else
+    elsif @route
       @route.show_way
     end
   end
@@ -78,7 +78,9 @@ class Train
   end
 
   def go_back
-    if @sum == 0
+    if @route.nil?
+      puts "У поезда нет маршрута следования."
+    elsif @sum == 0
       puts 'Поезд находится на начальной станции'
     else
       @sum -= 1
@@ -89,6 +91,6 @@ class Train
   end
 
   def show_where
-    puts "Поезд находится на станции: #{@train_now.name}"
+    puts "Поезд находится на станции: #{@train_now.name}" if @route
   end
 end
