@@ -80,9 +80,7 @@ class Train
   end
 
   def go_back
-    if @route.nil?
-      puts "У поезда нет маршрута следования."
-    elsif @sum == 0
+    if @sum == 0
       puts 'Поезд находится на конечной станции'
     else
       @sum -= 1
