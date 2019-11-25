@@ -2,11 +2,11 @@ class Route
   attr_accessor :route
 
   def initialize(starting, final)
-    @route = [] << starting << final
+    @route = [starting, final]
   end
 
   def add_route(*new_route)
-    new_route.each { |r| @route.insert(@route.size - 1, r) }
+    new_route.each { |route| @route.insert(@route.size - 1, route) }
   end
 
   def delete_way(way)
@@ -18,7 +18,7 @@ class Route
       num = @route.index(name_station)
       puts "Вы покинули станцию #{@route[num -1].name},\nСейчас находитесь на станции #{@route[num].name}\nСледующая остановка #{@route[num + 1].name}"
     else
-      @route.each {|x| puts x.name}
+      @route.each { |x| puts x.name }
     end
   end
 end
