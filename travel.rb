@@ -19,7 +19,7 @@ train1.speed(100)
 train1.show_speed
 train1.stop
 train1.show_speed
-train1.change_carriages(-1)
+train1.add_carrige
 train1.type_train
 puts
 train1.add_route(route1)

@@ -40,13 +40,21 @@ class Train
     end
   end
 
-  def change_carriages(carriage)
-    if @speed == 0 && carriage == 1
+  def add_carrig
+    if speed.zero?
       @type[1] += 1
-    elsif @speed == 0 && carriage == -1
+    else
+      puts "На ходу нельзя цеплять вагоны!"
+    end
+  end
+
+  def delete_carrig
+    if @type[1].zero?
+      puts "Вагонов уже не осталось."
+    elsif speed.zero?
       @type[1] -= 1
     else
-      puts "Для изменения количества вагонов необходимо остановиться. \nДобавить или отцепить, за раз можно только один вагон"
+      puts "На ходу нельзя отцеплять вагоны!"
     end
   end
 
