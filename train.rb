@@ -81,7 +81,7 @@ class Train
 
   def go_back
     if @sum == 0
-      puts 'Поезд находится на конечной станции'
+      puts 'Поезд находится на начальной станции'
     else
       @sum -= 1
       @train_now.send_train(self)
