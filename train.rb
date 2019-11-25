@@ -6,7 +6,7 @@ class Train
     @type = type
     @speed = 0
     @route
-    @arr_station = []
+    @arr_stations = []
     @have_route = false
     @train_now = nil
     @sum = 0
@@ -61,33 +61,34 @@ class Train
   def add_route(route_train)
     @have_route = true
     @route = route_train
-    @route.route.each { |x| @arr_station << x}
-    @arr_station[@sum].get_train(self)
-    @train_now = @arr_station[@sum]
+    @route.route.each { |x| @arr_stations << x}
+    @arr_stations[0].get_train(self)
+    @train_now = @arr_stations[0]
   end
 
-  def go(step)
-    @sum += step #счетчик
-
-    #проверяет конечный ли маршрут, сравнивая счетчик с размером массива - 1
-    #прерывает движение по маршруту и устанавливает счетчик в максимальное значение индекса массива.
-    if @sum > @arr_station.size - 1
-      puts "Поезд на конечной станции: #{@train_now.name}, но скоро он отправится в обратный путь."
-      return @sum = @arr_station.size - 1
-      #проверяет движется ли поезд по отрицательному значению индекса массива и прерывает движение устанавливая счетчик в нуливое значение.
-    elsif @sum < 0
-      puts "Поезд на конечной станции: #{@train_now.name}, но скоро он отправится в обратный путь."
-      return @sum = 0
-    end
-
-    if @have_route == true && step == 1 || @have_route == true && step == -1
-      @train_now.send_train(self)
-
-      @arr_station[@sum].get_train(self)
-
-      @train_now = @arr_station[@sum]
+  def go
+    if @route.nil?
+      puts "У поезда нет маршрута следования."
+    elsif @sum == @arr_stations.size - 1
+      puts 'Поезд находится на конечной станции'
     else
-      puts 'Нет маршрута следования. За раз можно проехать только одну станцию.'
+      @sum += 1
+      @train_now.send_train(self)
+      @arr_stations[@sum].get_train(self)
+      @train_now = @arr_stations[@sum]
+    end
+  end
+
+  def go_back
+    if @route.nil?
+      puts "У поезда нет маршрута следования."
+    elsif @sum == 0
+      puts 'Поезд находится на конечной станции'
+    else
+      @sum -= 1
+      @train_now.send_train(self)
+      @arr_stations[@sum].get_train(self)
+      @train_now = @arr_stations[@sum]
     end
   end
 

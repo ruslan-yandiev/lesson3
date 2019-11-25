@@ -29,28 +29,28 @@ station1.show_trains_info(1)
 
 
 train1.show_where
-train1.go(1)
+train1.go
 train1.show_where
-train1.go(1)
+train1.go
 train1.show_where
 
 train1.show_route
 train1.show_route(1)
 
-train1.go(1)
+train1.go
 train1.show_where
-train1.go(1)
+train1.go
 train1.show_where
 puts
-train1.go(-1)
+train1.go_back
 train1.show_where
-train1.go(-1)
+train1.go_back
 train1.show_where
 
 train1.show_route
 train1.show_route(1)
 
-train1.go(-1)
+train1.go_back
 train1.show_where
-train1.go(-1)
+train1.go_back
 train1.show_where
