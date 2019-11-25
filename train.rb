@@ -7,7 +7,6 @@ class Train
     @speed = 0
     @route
     @arr_stations = []
-    @have_route = false
     @train_now = nil
     @sum = 0
   end
@@ -59,7 +58,6 @@ class Train
   end
 
   def add_route(route_train)
-    @have_route = true
     @route = route_train
     @route.route.each { |x| @arr_stations << x}
     @arr_stations[0].get_train(self)
