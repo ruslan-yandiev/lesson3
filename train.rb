@@ -41,7 +41,7 @@ class Train
   end
 
   def add_carrig
-    if speed.zero?
+    if @speed.zero?
       @type[1] += 1
     else
       puts "На ходу нельзя цеплять вагоны!"
@@ -51,7 +51,7 @@ class Train
   def delete_carrig
     if @type[1].zero?
       puts "Вагонов уже не осталось."
-    elsif speed.zero?
+    elsif @speed.zero?
       @type[1] -= 1
     else
       puts "На ходу нельзя отцеплять вагоны!"
